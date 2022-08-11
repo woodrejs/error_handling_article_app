@@ -11,18 +11,9 @@ export const AxiosInterceptorProvider = ({children}) => {
     const resInterceptor = response => response;
     const errInterceptor = error => {
       if (error.response) {
-        return notify('customNotification', {
+        notify('customNotification', {
           params: {
             customTitle: `Response error status ${error.response.status}`,
-            customDescription: error.message,
-          },
-        });
-      }
-
-      if (error.request) {
-        return notify('customNotification', {
-          params: {
-            customTitle: `Request error status ${error.request.status}`,
             customDescription: error.message,
           },
         });

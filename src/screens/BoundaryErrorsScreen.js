@@ -1,34 +1,38 @@
 import React, {useState} from 'react';
 import {ErrorBoundary} from 'react-error-boundary';
-import {CustomFallback} from '../components/CustomFallback';
+import {useNotifications} from 'react-native-notificated';
+import {FallbackComponent} from '../components/FallbackComponent';
 import {ComponentWithError} from '../components/ComponentWithError';
 import {View, StyleSheet, Button} from 'react-native';
-import {useNotifications} from 'react-native-notificated';
 
 export const BoundaryErrorsScreen = () => {
   const [isErrorComponentVisible, setIsErrorComponentVisible] = useState(false);
   const {notify} = useNotifications();
 
-  const errorHandler = error => {
+  const onError = error => {
     notify('customNotification', {
       params: {
-        customTitle: 'Error title',
+        customTitle: 'Boundary error',
         customDescription: error.message,
       },
     });
   };
-  const pressHandler = () => setIsErrorComponentVisible(true);
 
   return (
-    <ErrorBoundary onError={errorHandler} FallbackComponent={CustomFallback}>
-      <View style={styles.container}>
-        <Button title="Throw Error" onPress={pressHandler} />
-      </View>
+    <ErrorBoundary {...{onError, FallbackComponent}}>
+      <InvokeErrorButton onPress={() => setIsErrorComponentVisible(true)} />
       {isErrorComponentVisible && <ComponentWithError />}
     </ErrorBoundary>
   );
 };
 
+const InvokeErrorButton = ({onPress}) => {
+  return (
+    <View style={styles.container}>
+      <Button {...{title: 'Throw Error', onPress}} />
+    </View>
+  );
+};
 const styles = StyleSheet.create({
   container: {
     justifyContent: 'center',

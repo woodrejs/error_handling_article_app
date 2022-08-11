@@ -20,12 +20,12 @@ export const SSRErrorsScreen = () => {
   return (
     <View style={styles.container}>
       <FlatList
-        data={data?.results || []}
-        keyExtractor={item => item.id}
-        renderItem={({item}) => <ListItem key={item.id} {...{item}} />}
         numColumns={2}
         style={styles.list}
+        data={data?.results || []}
+        keyExtractor={item => item.id}
         ListEmptyComponent={ListEmptyComponent}
+        renderItem={({item}) => <ListItem key={item.id} {...{item}} />}
       />
     </View>
   );

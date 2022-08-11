@@ -1,7 +1,7 @@
 import React from 'react';
 import {Text, View, StyleSheet, Button, Image} from 'react-native';
 
-export const CustomFallback = props => {
+export const FallbackComponent = props => {
   return (
     <View style={styles.container}>
       <Image style={styles.icon} source={require('../assets/error.png')} />
