@@ -1,37 +1,39 @@
 import React from 'react';
-import {Text, View, StyleSheet, Button, Image} from 'react-native';
+import styled from 'styled-components/native';
+import {Button} from 'react-native';
 
 export const FallbackComponent = props => {
   return (
-    <View style={styles.container}>
-      <Image style={styles.icon} source={require('../assets/error.png')} />
-      <Text style={styles.title}>Something happened!</Text>
-      <Text style={styles.description}>{props.error.toString()}</Text>
+    <Container>
+      <Icon source={require('../assets/error.png')} />
+      <Title>Something happened!</Title>
+      <Description>{props.error.toString()}</Description>
       <Button title={'Try again'} onPress={() => props.resetError} />
-    </View>
+    </Container>
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 50,
-  },
-  title: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    textTransform: 'capitalize',
-    color: '#00171f',
-    textAlign: 'center',
-    marginTop: 10,
-  },
-  description: {
-    fontSize: 14,
-    color: '#00171f',
-    textAlign: 'center',
-    marginTop: 10,
-  },
-  icon: {height: 45, width: 45},
-});
+const Container = styled.View`
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  padding: 50px;
+`;
+const Icon = styled.Image`
+  height: 45px;
+  width: 45px;
+`;
+const Title = styled.Text`
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: capitalize;
+  color: #00171f;
+  text-align: center;
+  margin-top: 10px;
+`;
+const Description = styled.Text`
+  font-size: 14px;
+  color: #00171f;
+  text-align: center;
+  margin-top: 10px;
+`;

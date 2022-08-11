@@ -1,6 +1,7 @@
 import React from 'react';
+import styled from 'styled-components/native';
+import {Button} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
-import {View, StyleSheet, Button} from 'react-native';
 import {useNotifications} from 'react-native-notificated';
 
 export const EventErrorsScreen = () => {
@@ -21,21 +22,19 @@ export const EventErrorsScreen = () => {
   };
 
   return (
-    <View style={styles.container}>
+    <Container>
       <Button title="Throw Event Error" onPress={throwError} />
       <Button title="Go to SSR Errors" onPress={() => navigate('SSR Errors')} />
       <Button
         title="Go to Boundary Errors"
         onPress={() => navigate('Boundary Errors')}
       />
-    </View>
+    </Container>
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    height: '100%',
-  },
-});
+const Container = styled.View`
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+`;

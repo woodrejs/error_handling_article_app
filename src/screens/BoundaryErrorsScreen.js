@@ -9,6 +9,7 @@ export const BoundaryErrorsScreen = () => {
   const [isErrorComponentVisible, setIsErrorComponentVisible] = useState(false);
   const {notify} = useNotifications();
 
+  const onPress = () => setIsErrorComponentVisible(true);
   const onError = error => {
     notify('customNotification', {
       params: {
@@ -20,7 +21,7 @@ export const BoundaryErrorsScreen = () => {
 
   return (
     <ErrorBoundary {...{onError, FallbackComponent}}>
-      <InvokeErrorButton onPress={() => setIsErrorComponentVisible(true)} />
+      <InvokeErrorButton {...{onPress}} />
       {isErrorComponentVisible && <ComponentWithError />}
     </ErrorBoundary>
   );

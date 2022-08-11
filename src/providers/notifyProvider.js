@@ -15,6 +15,6 @@ const {NotificationsProvider} = createNotifications({
   isNotch: true,
 });
 
-export const NotifiactionsProvider = ({children}) => {
+export const NotifyProvider = ({children}) => {
   return <NotificationsProvider>{children}</NotificationsProvider>;
 };
