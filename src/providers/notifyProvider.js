@@ -1,6 +1,9 @@
 import React from 'react';
 import {CustomNotification} from '../components/CustomNotification';
-import {createNotifications} from 'react-native-notificated';
+import {
+  createNotifications,
+  ZoomInDownZoomOutUp,
+} from 'react-native-notificated';
 
 const {NotificationsProvider} = createNotifications({
   variants: {
@@ -9,6 +12,7 @@ const {NotificationsProvider} = createNotifications({
       config: {
         notificationPosition: 'top',
         duration: 5000,
+        animationConfig: ZoomInDownZoomOutUp,
       },
     },
   },
